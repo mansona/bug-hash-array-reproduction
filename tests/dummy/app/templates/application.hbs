@@ -1,3 +1,45 @@
-<h2 id="title">Welcome to Ember</h2>
+<h1 id="title">Bug Reproduction: hash-array</h1>
 
-{{outlet}}
+<p>This is a bug reproduction that you seems to have been introduced in ember-beta recently (in the last week or so since time of writing).</p>
+
+<p>If you run this app using <code>ember serve</code> as usual it will just work. But if you run it using <code>ember try:one ember-beta --- ember serve</code> it will crash</p>
+
+<h2>Normal array helper</h2>
+
+<table>
+  <tbody>
+    {{#each
+      (array "all" "horizontal" "vertical" "top" "right" "bottom" "left") as |item|
+    }}
+
+      <tr>
+        <td>{{item}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+<h2>Array of hashes</h2>
+
+<table>
+  <tbody>
+    {{#each
+      (array
+        (hash value='' name='all')
+        (hash value='x' name="horizontal")
+        (hash value='y' name="vertical")
+        (hash value='t' name="top")
+        (hash value='r' name="right")
+        (hash value='b' name="bottom")
+        (hash value='l' name="left")
+      ) as |item|
+    }}
+
+      <tr>
+        <td>{{item.value}}</td>
+        <td>{{item.name}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
