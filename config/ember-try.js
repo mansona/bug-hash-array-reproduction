@@ -45,6 +45,14 @@ module.exports = async function() {
           }
         }
       },
+      {
+        name: 'ember-canary-pre-beta',
+        npm: {
+          devDependencies: {
+            'ember-source': 'https://s3.amazonaws.com/builds.emberjs.com/canary/shas/25da0da7d07f95cc6a27b3c56882da970dc8a568.tgz'
+          }
+        }
+      },
       // The default `.travis.yml` runs this scenario via `npm test`,
       // not via `ember try`. It's still included here so that running
       // `ember try:each` manually or from a customized CI config will run it
